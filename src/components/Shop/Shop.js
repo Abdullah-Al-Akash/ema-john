@@ -5,6 +5,8 @@ import './Shop.css';
 const Shop = () => {
         // Set for Products:
         const [products, setProducts] = useState([]);
+        // For Cart:
+        const [cart, setCart] = useState([]);
 
         // Load Products from Data:
         useEffect(() => {
@@ -16,6 +18,8 @@ const Shop = () => {
         // Handle Add To Cart:
         const handleAddToCart = (product) => {
                 console.log(product);
+                const newProduct = [...cart, product];
+                setCart(newProduct);
         }
         return (
                 <div className="container-fluid row">
@@ -34,6 +38,7 @@ const Shop = () => {
                         </div>
                         <div className="order col-md-3">
                                 <h3>This is Order Summary</h3>
+                                <h3>Selected Item: {cart.length}</h3>
                         </div>
                 </div>
         );
